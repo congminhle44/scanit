@@ -1,8 +1,7 @@
 import axios from 'axios';
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Alert,
-  FlatList,
   Platform,
   StatusBar,
   StyleSheet,
@@ -32,7 +31,7 @@ import Strings from '../../../constants/Strings';
 import TextFontSize from '../../../constants/TextFontSize';
 import {barCodeScaner, uploadImages} from '../../../redux/nonAuth/action';
 
-const blankOrderIDScreen = props => {
+const BlankOrderIDScreen = props => {
   const {route, navigation} = props;
   const {data, bagID, bagTypes, bag_Name, searchUser, buttonCall} =
     route.params;
@@ -42,9 +41,7 @@ const blankOrderIDScreen = props => {
   const [selected, setSelected] = useState('');
   const [defalts, setDefault] = useState();
   const [notes, setNotes] = useState('');
-  const [bagType, setBagType] = useState(bagTypes - 1);
   const [loading, setLoading] = useState(false);
-  const [defaultLocation, setDefaultLocation] = useState('');
   const [bag_ID, setBagID] = useState('');
   const yourRef = useRef(null);
   const [errorBoxOpen, setErrorBoxOpen] = useState(false);
@@ -209,11 +206,8 @@ const blankOrderIDScreen = props => {
   const callUsingSaveNext = async (orderID, id) => {
     await PrefManager.getValue('@StorageObject').then(async StorageObject => {
       PrefManager.getValue('@Transit').then(async Transit => {
-        let datas = JSON.parse(StorageObject);
-        let Transits = JSON.parse(Transit);
         console.log('orderID=> ' + JSON.stringify(orderID));
-        const newOrderID = orderID?.match(/\d+/);
-        var data = {
+        const data = {
           bag_id: id,
           bag_notes: notes,
           bag_type: selectedIndex + 1,
@@ -740,4 +734,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(blankOrderIDScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(BlankOrderIDScreen);

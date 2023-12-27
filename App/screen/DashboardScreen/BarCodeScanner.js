@@ -43,7 +43,6 @@ const BarCodeScanner = props => {
       newstatus: 0,
       redeliver: 'I',
     };
-
     props.barCodeScaner(data);
   };
 

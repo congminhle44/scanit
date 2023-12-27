@@ -25,7 +25,7 @@ import StorageCreateCustom from '../screen/DashboardScreen/StorageCreateCustom';
 import StorageDetailsAdd from '../screen/DashboardScreen/StorageDetailsAdd';
 import StorageScanner from '../screen/DashboardScreen/StorageScanner';
 import SearchUser from '../screen/DashboardScreen/blankOrderIDScreen/SearchUser';
-import blankOrderIDScreen from '../screen/DashboardScreen/blankOrderIDScreen/blankOrderIDScreen';
+import blankOrderIDScreen from '../screen/DashboardScreen/blankOrderIDScreen/BlankOrderIDScreen';
 import LoginScreen from '../screen/LoginScreen/LoginScreen';
 
 // Ignore log notification by message

@@ -129,7 +129,7 @@ const FetchScreenComponents = props => {
           setGoldCareOpen(false),
           setTransferOutOpen(false),
           setOpenModal(false);
-        console.log('2');
+        console.log('success 1');
         getOrderId();
         bagName === 'identify'
           ? props.navigation.navigate('BarcodeDetailsAdd', {
@@ -153,7 +153,7 @@ const FetchScreenComponents = props => {
         props?.barcodeScanData?.data?.error === 'ok' &&
         props?.barcodeScanData?.data?.order_id === 0
       ) {
-        console.log('3');
+        console.log('success 2');
         props.navigation.navigate('blankOrderIDScreen', {
           data: props?.barcodeScanData?.data,
           bagID: bagID,
@@ -169,16 +169,16 @@ const FetchScreenComponents = props => {
           props?.barcodeScanData?.data?.ret == 1) ||
         (props?.barcodeScanData &&
           props?.barcodeScanData?.data &&
-          props?.barcodeScanData?.data?.error === 'Invalid bag id')
+          props?.barcodeScanData?.data?.error)
       ) {
-        console.log('4');
+        console.log('error 1');
         setBarCodeScanErrorModal(true);
       } else if (
         props?.barcodeScanData &&
         props?.barcodeScanData?.data &&
         props?.barcodeScanData?.data?.ret === 4
       ) {
-        console.log('5');
+        console.log('error 2');
         setErrorModalOpen(true);
         setErrorMessage(props?.barcodeScanData?.data?.error);
       }
@@ -194,7 +194,7 @@ const FetchScreenComponents = props => {
 
   return (
     <View style={{marginTop: 10}}>
-      {errorModalOpen && (
+      {/* {errorModalOpen && (
         <ErrorBox
           errorModalOpen={errorModalOpen}
           closeModal={() => {
@@ -202,7 +202,7 @@ const FetchScreenComponents = props => {
           }}
           message={errorMessage}
         />
-      )}
+      )} */}
 
       {openModal === false ? (
         <>

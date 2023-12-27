@@ -27,7 +27,7 @@ const ErrorBox = props => {
 
         <TouchableOpacity
           onPress={() => {
-            props.closeModal(false);
+            props.closeModal();
             props.screenName
               ? props.navigation.navigate(props.screenName, {
                   bag_Name: props.bag_name,
