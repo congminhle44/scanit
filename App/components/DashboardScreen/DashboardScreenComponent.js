@@ -44,36 +44,36 @@ const DashboardScreenComponent = props => {
       return {key: item.data, value: item.text};
     });
     setData(newArray);
+    console.log('changed');
+    // const subscription = AppState.addEventListener('change', nextAppState => {
+    //   if (
+    //     appState.current.match(/inactive|background/) &&
+    //     nextAppState === 'active'
+    //   ) {
+    //     setDefault({});
+    //     // PrefManager.removeValue('@default');
+    //     // AsyncStorage.removeItem('@default');
+    //     PrefManager.removeValue('@schoolId');
+    //     console.log('App has come to the foreground!');
+    //   } else {
+    //     setDefault({});
+    //     console.log('App has come to the background!');
+    //     // AsyncStorage.removeItem('@default');
+    //     // PrefManager.removeValue('@default');
+    //     PrefManager.removeValue('@schoolId');
+    //   }
 
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        setDefault({});
-        PrefManager.removeValue('@default');
-        AsyncStorage.removeItem('@default');
-        PrefManager.removeValue('@schoolId');
-        console.log('App has come to the foreground!');
-      } else {
-        setDefault({});
-        console.log('App has come to the background!');
-        AsyncStorage.removeItem('@default');
-        PrefManager.removeValue('@default');
-        PrefManager.removeValue('@schoolId');
-      }
+    //   appState.current = nextAppState;
+    //   setDefault({});
+    //   // PrefManager.removeValue('@default');
+    //   // AsyncStorage.removeItem('@default');
+    //   PrefManager.removeValue('@schoolId');
+    //   console.log('AppState', appState.current);
+    // });
 
-      appState.current = nextAppState;
-      setDefault({});
-      PrefManager.removeValue('@default');
-      AsyncStorage.removeItem('@default');
-      PrefManager.removeValue('@schoolId');
-      console.log('AppState', appState.current);
-    });
-
-    return () => {
-      subscription.remove();
-    };
+    // return () => {
+    //   subscription.remove();
+    // };
   }, [schoollist]);
 
   const getDefaultData = async () => {
