@@ -30,8 +30,9 @@ const MoveDetailsAdd = props => {
   const [userName, setUserName] = useState('');
   const {navigation, data, bag_type, bag_Name} = props.route.params;
   const [bagType, setBagType] = useState(bag_type);
-  const [selected, setSelected] = React.useState('');
-  const [locationList, setLocationList] = React.useState([]);
+  const [selected, setSelected] = useState('');
+  const [defaultOption, setDefault] = useState('');
+  const [locationList, setLocationList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorBoxOpen, setErrorBoxOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -50,6 +51,8 @@ const MoveDetailsAdd = props => {
     'Inter-SemiBold',
     'Inter-Thin',
   ];
+
+  useEffect(() => getDefaultMoveLocation(), []);
 
   useEffect(() => {
     getUserDetails();
@@ -79,6 +82,11 @@ const MoveDetailsAdd = props => {
   };
 
   const handlechange = id => {
+    if (id !== 0) {
+      let IDS = id === 0 ? '0' : id;
+      const names = locationList.filter(item => item.key === IDS).map(x => x);
+      PrefManager.setValue('@moveLocation', JSON.stringify(names[0]));
+    }
     setSelected(id);
   };
 
@@ -136,6 +144,11 @@ const MoveDetailsAdd = props => {
         Strings.no_internet_connection_please_check_your_internetconnection,
       );
     }
+  };
+
+  const getDefaultMoveLocation = async () => {
+    const defalt = JSON.parse(await PrefManager.getValue('@moveLocation'));
+    setDefault(defalt);
   };
 
   const MyStatusBar = ({backgroundColor, ...props}) => (
@@ -222,6 +235,7 @@ const MoveDetailsAdd = props => {
                 dropdownStyles={styles.dropdownStyles}
                 maxHeight={ScaleSizeUtils.hp(20)}
                 placeholder={'Select move location'}
+                defaultOption={defaultOption}
               />
 
               <Text style={styles.premiumText}>{data?.data?.goldcare}</Text>
