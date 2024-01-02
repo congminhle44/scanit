@@ -1,5 +1,6 @@
 // const BASE_URL = 'https://schooltrunk.librisdev.com/sys/';
-const BASE_URL = 'https://www.schooltrunk.org/sys/';
+// const BASE_URL = 'https://www.schooltrunk.org/sys/';
+const BASE_URL = 'https://schooltrunk.techwiz.tech/sys/index.php/';
 
 var BASE_URL_PHOTOGHOST = BASE_URL + 'scanit/';
 var BASE_URL_PASSWORD = BASE_URL + 'password/';
